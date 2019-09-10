@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Prj.Arq.Core.Infra.Cross\Projeto.Arquitetura.Core.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
 </Project>

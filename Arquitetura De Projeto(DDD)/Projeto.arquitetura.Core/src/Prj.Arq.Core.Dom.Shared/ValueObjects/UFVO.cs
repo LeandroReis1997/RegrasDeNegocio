@@ -1,10 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using Projeto.Arquitetura.Core.Infra.CrossCutting.Extensions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Projeto.Arquitetura.Core.Domain.Shared.ValueObjects
 {
     public class UFVO
     {
         public string UF { get; set; }
+
+        public bool Validar(string uf)
+        {
+            if (!string.IsNullOrEmpty(uf))
+            {
+                return ValidarUF(uf);
+            }
+            return true;
+        }
+
+        private bool ValidarUF(string uf)
+        {
+            if (uf.SomenteNumeros().Length != 0) return false;
+            if (uf.SomenteLetras().Length != 2) return false;
+            var listadeestados = ObterEstados();
+            if (!listadeestados.Where(x => x.Codigo == uf).Any())
+            {
+                return false;
+            }
+            return true;
+        }
 
         public List<Estado> ObterEstados()
         {
