@@ -1,4 +1,5 @@
 ﻿using Prj.Arq.Core.Dom.Shared.Entidades;
+using System.Linq;
 
 namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
 {
@@ -7,12 +8,28 @@ namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
         public int Qtd { get; set; }
         public int IdPedido { get; set; }
         public int IdProduto { get; set; }
-        public string Apelido { get; set; }
-        public string Nome { get; set; }
 
         public override bool EstaConsistente()
         {
-            throw new System.NotImplementedException();
+            QtdDeveSerSuperiorAZero();
+            ItemDePedidoDeveSerAssociadoAUmPedido();
+            ProdutoDeveSerPreenchido();
+
+            return !ListaErros.Any();
+        }
+
+        private void QtdDeveSerSuperiorAZero()
+        {
+            if (Qtd <= 0) ListaErros.Add("Qtd. deverá ser informada!");
+        }
+        private void ItemDePedidoDeveSerAssociadoAUmPedido()
+        {
+            if (IdPedido <= 0) ListaErros.Add("Nº. pedido inválido!");
+        }
+
+        private void ProdutoDeveSerPreenchido()
+        {
+            if (IdProduto <= 0) ListaErros.Add("Produto deve ser informado!");
         }
     }
 }

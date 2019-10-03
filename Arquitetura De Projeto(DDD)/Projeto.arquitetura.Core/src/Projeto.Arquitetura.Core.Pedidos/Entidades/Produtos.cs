@@ -16,8 +16,11 @@ namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
         {
             ApelidoDeveSerPreenchido();
             ApelidoDeveTerUmtamanhoLimite();
+            NomeDeveSerPreenchido();
+            NomeDeveTerUmtamanhoLimite();
             ValorDeveraserSuperiorAZero();
             UnidadeDeveSerValida();
+            ForncedorDeveSerPreenchido();
             return !ListaErros.Any();
         }
         private void ApelidoDeveSerPreenchido()
@@ -30,6 +33,17 @@ namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
             if (Apelido.Length > 20)
                 ListaErros.Add("O apelido deve ter 20 caracters!");
         }
+
+        private void NomeDeveSerPreenchido()
+        {
+            if (string.IsNullOrEmpty(Nome))
+                ListaErros.Add("O campo nome deve ser preenchido!");
+        }
+        private void NomeDeveTerUmtamanhoLimite()
+        {
+            if (Nome.Length > 150)
+                ListaErros.Add("O campo nome deve ter 150 caracters!");
+        }
         private void ValorDeveraserSuperiorAZero()
         {
             if (Valor <= 0)
@@ -39,6 +53,11 @@ namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
         {
             var listUnidade = new List<string> { "KL", "GR", "MT", "CM", "QT" };
             if (!listUnidade.Contains(Unidade)) ListaErros.Add("Unidade deve ser KL, GR, MT, CM ou QT!");
+        }
+        private void ForncedorDeveSerPreenchido()
+        {
+            if (IdFornecedor == 0)
+                ListaErros.Add("O campo fornecedor deve ser informado!");
         }
     }
 }
