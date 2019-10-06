@@ -3,11 +3,13 @@ using System.Linq;
 
 namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
 {
-    public class ItemsPedido: EntidadeBase
+    public class ItensPedidos: EntidadeBase
     {
         public int Qtd { get; set; }
         public int IdPedido { get; set; }
+        public virtual Pedidos Pedido { get; set; }
         public int IdProduto { get; set; }
+        public virtual Produtos Produto { get; set; }
 
         public override bool EstaConsistente()
         {

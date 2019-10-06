@@ -1,10 +1,12 @@
 ﻿using Prj.Arq.Core.Dom.Shared.Entidades;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
 {
     public class Fornecedores : Pessoa
     {
+        public ICollection<Produtos> Produtos { get; set; }
         public override bool EstaConsistente()
         {
             ApelidoDeverSerPreenchido();

@@ -1,5 +1,6 @@
 ﻿using Prj.Arq.Core.Dom.Shared.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
@@ -9,6 +10,9 @@ namespace Projeto.Arquitetura.Core.Domain.Pedidos.Entidades
         public DateTime DataPedido { get; set; }
         public DateTime? DataEntrega { get; set; }
         public int IdCliente { get; set; }
+        public virtual Clientes Cliente { get; set; }
+        public virtual ICollection<ItensPedidos> ItensPedidos { get; set; }
+
 
         public override bool EstaConsistente()
         {
