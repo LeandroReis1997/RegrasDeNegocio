@@ -25,4 +25,10 @@
     <ProjectReference Include="..\Projeto.Arquitetura.Core.Pedidos\Projeto.Arquitetura.Core.Domain.Pedidos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

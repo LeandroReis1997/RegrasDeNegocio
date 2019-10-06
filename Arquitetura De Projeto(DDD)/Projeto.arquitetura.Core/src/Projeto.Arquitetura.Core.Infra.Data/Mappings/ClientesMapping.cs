@@ -4,7 +4,7 @@ using Projeto.Arquitetura.Core.Domain.Pedidos.Entidades;
 
 namespace Projeto.Arquitetura.Core.Infra.Data.Mappings
 {
-    public class ClienteMapping : IEntityTypeConfiguration<Clientes>
+    public class ClientesMapping : IEntityTypeConfiguration<Clientes>
     {
         public void Configure(EntityTypeBuilder<Clientes> builder)
         {
